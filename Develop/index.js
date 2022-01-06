@@ -79,17 +79,33 @@ const questions = () => {
       }
     }
   ])
-  .then(data => {
-    console.log(data.title)
-    const filename = `${data.title.toLowerCase().split(' ').join('')}.json`;
+  // .then(data => {
+  //   console.log(data.title)
+  //   const filename = `${data.title.toLowerCase().split(' ').join('')}.json`;
 
-    fs.writeFile(filename, JSON.stringify(data, null, '\t'), err =>
-      err ? console.log(err) : console.log('Success!'))
-  });
+    
+  // });
+};
+
+const writeFile = data => {
+fs.writeFile('README.md', data, err => {
+  if (err) {
+    console.log(err);
+    return;
+  } else {
+    console.log('Congratulations, your readme has been made')
+  }
+})
 };
 
 // TODO: Create a function to initialize app
 questions()
+.then(responses => {
+  generatePage(responses)
+})
+.then(data => {
+  return writeFile(data);
+})
 
 // Function call to initialize app
 // init();
