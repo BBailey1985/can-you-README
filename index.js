@@ -122,6 +122,7 @@ const questions = () => {
   ])
 };
 
+// async function to get answers and generate markdown
 async function init () {
   try {
     const answers = await questions();
