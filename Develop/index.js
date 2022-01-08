@@ -1,7 +1,7 @@
 // packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generatePage = require('./utils/generateMarkdown.js');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 
 // making an array of questions
 const questions = () => {
@@ -81,8 +81,8 @@ const questions = () => {
   ])
 };
 
-const writeFile = data => {
-fs.writeFile('README.md', data, err => {
+const writeFile = (fileName, data => {
+fs.writeFile(fileName, data, err => {
   if (err) {
     console.log(err);
     return;
@@ -95,11 +95,13 @@ fs.writeFile('README.md', data, err => {
 // TODO: Create a function to initialize app
 questions()
 .then(responses => {
-  generatePage(responses)
+  generateMarkdown(responses)
 })
 .then(data => {
   return writeFile(data);
 })
 
 // Function call to initialize app
-// init();
+// init() {
+// const userAnswers = 
+// };
